@@ -1,0 +1,36 @@
+{
+    "method": "opencv_pseudo_segmentation",
+    "image_size": 224,
+    "crop_margin": 12,
+    "preprocessing": {
+        "median_blur_kernel": 5,
+        "clahe_clip_limit": 2.0,
+        "clahe_grid_size": [
+            8,
+            8
+        ]
+    },
+    "thresholding": {
+        "dark_threshold": 50
+    },
+    "morphology": {
+        "open_kernel": 3,
+        "close_kernel": 3
+    },
+    "filtering": {
+        "min_area": 20,
+        "max_area": 1500,
+        "min_circularity": 0.35,
+        "center_distance_ratio": 0.45
+    },
+    "features": [
+        "follicle_count",
+        "avg_area",
+        "total_area",
+        "avg_circularity"
+    ],
+    "output": {
+        "return_mask": true,
+        "return_overlay": true
+    }
+}

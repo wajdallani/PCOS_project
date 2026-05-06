@@ -1,0 +1,52 @@
+{
+    "model": "ResNet50",
+    "task": "PCOS ultrasound image classification",
+    "IMG_SIZE": 224,
+    "inference_transforms": {
+        "resize": [
+            224,
+            224
+        ],
+        "to_tensor": true,
+        "normalize": true,
+        "normalization_mean": [
+            0.485,
+            0.456,
+            0.406
+        ],
+        "normalization_std": [
+            0.229,
+            0.224,
+            0.225
+        ]
+    },
+    "training_augmentations": {
+        "random_horizontal_flip": {
+            "p": 0.5
+        },
+        "random_rotation_degrees": 10,
+        "color_jitter": {
+            "brightness": 0.15,
+            "contrast": 0.15
+        },
+        "gaussian_noise": {
+            "std_range": [
+                0.0,
+                0.05
+            ],
+            "p": 0.5
+        },
+        "speckle_noise": {
+            "std_range": [
+                0.0,
+                0.06
+            ],
+            "p": 0.4
+        }
+    },
+    "class_mapping": {
+        "0": "Non-PCOS",
+        "1": "PCOS"
+    },
+    "probability_output": "p_image"
+}
